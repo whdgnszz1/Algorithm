@@ -15,6 +15,7 @@ function solution(s) {
             answer += v.toLowerCase()
         }
     }))
+    console.log(answer)
     let arr2 = answer.split("")
     for (j = 0 ; j < indexArr.length; j++) {
         arr2.splice(indexArr[j], 0, " ")
