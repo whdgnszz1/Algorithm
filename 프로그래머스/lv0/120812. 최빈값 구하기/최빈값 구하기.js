@@ -1,9 +1,11 @@
 function solution(array) {
-    let arr = new Map()
+    let arr = new Map() // O(1)
     array.map(v => {
-        arr.has(v)? arr.set(v, arr.get(v)+1) : arr.set(v, 1)
+        arr.has(v)? 
+        arr.set(v, arr.get(v)+1) : 
+        arr.set(v, 1)
     })
-    // let sortedArr = [...arr].sort((a,b) => b[1]-a[1])
+    console.log(arr)
     let repeatArr = [...arr].map(v => v[1])
     let maxNum = Math.max(...repeatArr)
     let answerArr = [...arr].filter(v => v[1] == maxNum)
