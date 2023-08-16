@@ -5,6 +5,7 @@ function solution(a, b, c, d) {
         obj.has(item)? obj.set(item,obj.get(item)+1) : obj.set(item,1)
     })
     let sortedArr = [...obj].sort((a,b) => b[1]-a[1])
+    
     if(sortedArr.length === 1) {
         return 1111 * sortedArr[0][0]
     } else if (sortedArr.length === 2 && sortedArr[0][1]===3) {
