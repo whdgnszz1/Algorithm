@@ -8,4 +8,4 @@ function solution(numbers, n) {
         }
     }
         return answer
-    }
+}
