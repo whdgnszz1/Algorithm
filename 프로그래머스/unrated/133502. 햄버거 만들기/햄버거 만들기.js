@@ -1,20 +1,24 @@
 function solution(ingredient) {
-    var answer = 0;
-    while(true) {
-        let beforeLength = ingredient.length;
+    let stack = [];
+    let answer = 0;
+    
+    for (let i = 0; i < ingredient.length; i++) {
+        stack.push(ingredient[i]);
         
-        for(let i = 0 ; i < ingredient.length-3; i++) {
-            if( ingredient[i] == 1 && ingredient[i+1] == 2 && ingredient[i+2] == 3 && ingredient[i+3] == 1) {
-                answer++
-                ingredient.splice(i , 4);
-                i -= 3; // 재료를 제거한 후 인덱스 조정
-            }
-        }
-        
-        // 만약 포장 가능한 햄버거가 더 이상 없으면 break
-        if (beforeLength === ingredient.length) {
-            break;
+        // 스택에 4개 이상의 재료가 있고, 마지막 4개의 재료가 햄버거 조건을 만족하는지 확인
+        if (stack.length >= 4 && 
+            stack[stack.length - 4] === 1 && 
+            stack[stack.length - 3] === 2 && 
+            stack[stack.length - 2] === 3 && 
+            stack[stack.length - 1] === 1) {
+            // 햄버거를 만들면 스택에서 해당 재료들을 제거
+            stack.pop();
+            stack.pop();
+            stack.pop();
+            stack.pop();
+            answer++;
         }
     }
+    
     return answer;
 }
