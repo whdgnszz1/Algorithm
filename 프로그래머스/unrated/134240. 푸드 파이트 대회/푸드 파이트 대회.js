@@ -1,9 +1,18 @@
 function solution(food) {
-    var answer = '';
-    let arr = food.map(v => Math.floor(v / 2))
-    let prevStr = ""
-    arr.map((v,i) => prevStr += `${i}`.repeat(v))
-    console.log(prevStr)
-    let reverseStr = prevStr.split("").reverse().join("")
-    return `${prevStr}0${reverseStr}`
+  let answer = '';
+  let str =``;
+  let arr =[];
+  //[[0,1],[1,3],[2,4],[3,6]];
+
+  food.forEach((x,i)=>{
+    if(i>=1){
+      arr.push([i,parseInt(x/2)]);
+    }
+
+  })
+  arr.forEach((x)=>{
+    str+=String(x[0]).repeat(x[1]);
+  })
+  
+  return `${str}0${str.split('').reverse().join('')}`;
 }
