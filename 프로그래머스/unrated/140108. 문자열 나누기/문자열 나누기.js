@@ -1,27 +1,26 @@
 function solution(s) {
-    var answer = 0;
-    let sArr = s.split("")
-    let same = []
-    let diff = []
-    
-    while(sArr.length){
-        if(!same.length) {
-            same.push(sArr.shift())
-        }
-        if(sArr[0] === same[0]) {
-            same.push(sArr.shift())
+    let string = s.split('');
+    let arr1 = [];
+    let arr2 = [];
+
+    let count = 0;
+    for (let i = 0; string.length !== 0;) {
+        if (arr1.length === 0) {
+            arr1.push(string.shift());
         } else {
-            diff.push(sArr.shift())
+          if (arr1[0] === string[i]) {
+              arr1.push(string.shift());
+          } else {
+              arr2.push(string.shift());
+          }
         }
-        if(same.length === diff.length) {
-          answer++
-          same = []
-          diff = []
+      
+        if (arr1.length === arr2.length) {
+            arr1 = [];
+            arr2 = [];
+            count++;
         }
     }
-    
-    if (same.length > 0 || diff.length > 0) {
-        answer++;
-    }
-    return answer ? answer : 1
+
+    return arr1.length !== 0 || arr2.length !== 0 ? count + 1 : count;
 }
